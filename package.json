@@ -1,0 +1,16 @@
+{
+  "name": "modalist",
+  "version": "1.0.0",
+  "description": "A powerful AJAX modal plugin extending iziModal",
+  "main": "modalist.js",
+  "bugs": {
+    "url": "https://github.com/jonhue/modalist.js/issues",
+    "email": "me@jonhue.me"
+  },
+  "repository": "https://github.com/jonhue/modalist.js",
+  "author": "Jonas Hübotter <me@jonhue.me>",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}
