@@ -9,7 +9,7 @@ Modalist is a powerful ajaxified modal plugin. Here is how it works:
 2) Modalist fetches the modal contents with AJAX
 3) The modal opens
 
-Modalist does not reinvent the wheel and uses the best modal-engine [iziModal.js](https://github.com/dolce/iziModal) to backup its code.
+Modalist does not reinvent the wheel and uses todays best modal-engine [iziModal.js](https://github.com/dolce/iziModal) to backup its code.
 
 Utilize the [gem](https://github.com/jonhue/modalist) when using modalist.js with Rails.
 
