@@ -1,6 +1,6 @@
 /**!
  * @fileOverview modalist.js - A powerful AJAX modal plugin extending iziModal
- * @version 1.0.1
+ * @version 1.0.2
  * @license
  * MIT License
  *
@@ -25,7 +25,7 @@
  * SOFTWARE.
  */
 var Modalist;
-(function($) {
+$(document).ready(function() {
     Modalist = new function(options) {
 
         var defaults = {
@@ -51,9 +51,9 @@ var Modalist;
             e.data = { url: url };
             $(document).trigger(e);
 
-            this.reset();
-            this.fullScreen(fullScreen);
-            this.load( url, form );
+            Modalist.reset();
+            Modalist.fullScreen(fullScreen);
+            Modalist.load( url, form );
 
         });
 
@@ -66,29 +66,29 @@ var Modalist;
             };
             options = $.extend( defaults, options );
 
-            this.reset();
-            this.fullScreen(options.fullScreen);
-            this.load( options.url, options.form );
+            Modalist.reset();
+            Modalist.fullScreen(options.fullScreen);
+            Modalist.load( options.url, options.form );
 
         };
 
         this.close = function() {
-            $(this.modal).iziModal('close');
+            $(Modalist.modal).iziModal('close');
         };
 
         this.reset = function() {
-            $(this.modal).iziModal('setTransitionIn', 'comingIn');
-            $(this.modal).iziModal('setTransitionOut', 'comingOut');
-            $(this.modal).data('full-screen', false);
-            $(this.modal).iziModal('setTop', 'auto');
-            $(this.modal).iziModal('setBottom', 'auto');
+            $(Modalist.modal).iziModal('setTransitionIn', 'comingIn');
+            $(Modalist.modal).iziModal('setTransitionOut', 'comingOut');
+            $(Modalist.modal).data('full-screen', false);
+            $(Modalist.modal).iziModal('setTop', 'auto');
+            $(Modalist.modal).iziModal('setBottom', 'auto');
         };
 
         this.fullScreen = function(fullScreen) {
             if ( fullScreen == 'true' || ( fullScreen == 'mobile' && $(window).width() <= 800 ) ) {
-                $(this.modal).iziModal('setTransitionIn', 'fadeInRight');
-                $(this.modal).iziModal('setTransitionOut', 'fadeOutRight');
-                $(this.modal).data('full-screen', true);
+                $(Modalist.modal).iziModal('setTransitionIn', 'fadeInRight');
+                $(Modalist.modal).iziModal('setTransitionOut', 'fadeOutRight');
+                $(Modalist.modal).data('full-screen', true);
             };
         };
 
@@ -108,13 +108,13 @@ var Modalist;
                     data : $(options.form).serialize(),
                     success: function(data) {
                         $(document).trigger('modalist:request-end');
-                        this.data(data);
+                        Modalist.data(data);
                     }
                 });
             } else {
                 $.get( url, function(data) {
                     $(document).trigger('modalist:request-end');
-                    this.data(data);
+                    Modalist.data(data);
                 });
             };
 
@@ -123,17 +123,17 @@ var Modalist;
         this.data = function(data) {
 
             $(document).trigger('modalist:before-render');
-            $(this.modal).find('.iziModal-content').html(data);
+            $(Modalist.modal).find('.iziModal-content').html(data);
             $(document).trigger('modal:render');
 
-            $(this.modal).iziModal('open');
-            if ( $(this.modal).height() + 60 > $(window).height() ) {
-                $(this.modal).iziModal('setTop', 30);
-                $(this.modal).iziModal('setBottom', 30);
+            $(Modalist.modal).iziModal('open');
+            if ( $(Modalist.modal).height() + 60 > $(window).height() ) {
+                $(Modalist.modal).iziModal('setTop', 30);
+                $(Modalist.modal).iziModal('setBottom', 30);
             };
             $(document).trigger('modalist:load');
 
         };
 
     };
-})(jQuery);
+});

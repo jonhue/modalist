@@ -37,7 +37,7 @@ Utilize the [gem](https://github.com/jonhue/modalist) when using modalist.js wit
 
 **Size:** Modalist takes < 1kb gzipped.
 
-**Dependencies:** [jQuery](https://github.com/jquery/jquery)
+**Dependencies:** [jQuery](https://github.com/jquery/jquery), [iziModal.js](https://github.com/dolce/iziModal)
 
 ---
 
