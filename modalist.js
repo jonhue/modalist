@@ -1,6 +1,6 @@
 /**!
  * @fileOverview modalist.js - A powerful AJAX modal plugin extending iziModal
- * @version 1.0.2
+ * @version 1.0.3
  * @license
  * MIT License
  *
@@ -25,7 +25,7 @@
  * SOFTWARE.
  */
 var Modalist;
-$(document).ready(function() {
+$(document).on( 'ready turbolinks:load', function() {
     Modalist = new function(options) {
 
         var defaults = {
@@ -53,7 +53,9 @@ $(document).ready(function() {
 
             Modalist.reset();
             Modalist.fullScreen(fullScreen);
-            Modalist.load( url, form );
+            Modalist.load( url, {
+                form: form
+            });
 
         });
 
@@ -68,7 +70,9 @@ $(document).ready(function() {
 
             Modalist.reset();
             Modalist.fullScreen(options.fullScreen);
-            Modalist.load( options.url, options.form );
+            Modalist.load( options.url, {
+                form: options.form
+            });
 
         };
 
@@ -104,7 +108,7 @@ $(document).ready(function() {
             if (options.form) {
                 $.ajax({
                     url: $(options.form).attr('action'),
-                    type: 'GET',
+                    type: $(options.form).attr('method'),
                     data : $(options.form).serialize(),
                     success: function(data) {
                         $(document).trigger('modalist:request-end');

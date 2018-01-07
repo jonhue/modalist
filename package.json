@@ -1,6 +1,6 @@
 {
   "name": "modalist",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A powerful AJAX modal plugin extending iziModal",
   "main": "modalist.js",
   "bugs": {
