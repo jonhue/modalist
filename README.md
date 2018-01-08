@@ -135,26 +135,27 @@ Modalist emits events that allow you to track the navigation lifecycle and respo
 
 ## To Do
 
-* Add more animations from [Animate.css](https://github.com/daneden/animate.css)
-* Leave your suggestions [here](https://github.com/slooob/turbolinks-animate.js/issues/new)
+[Here](https://github.com/jonhue/modalist.js/projects/1) is the full list of current projects.
+
+To propose your ideas, initiate the discussion by adding a [new issue](https://github.com/jonhue/modalist.js/issues/new).
 
 ---
 
 ## Contributing
 
-We hope that you will consider contributing to turbolinks-animate.js. Please read this short overview for some information about how to get started:
+We hope that you will consider contributing to Modalist. Please read this short overview for some information about how to get started:
 
-[Learn more about contributing to this repository](https://github.com/slooob/turbolinks-animate.js/blob/master/CONTRIBUTING.md), [Code of Conduct](https://github.com/slooob/turbolinks-animate.js/blob/master/CODE_OF_CONDUCT.md)
+[Learn more about contributing to this repository](CONTRIBUTING.md), [Code of Conduct](CODE_OF_CONDUCT.md)
 
 ### Contributors
 
 Give the people some :heart: who are working on this project. See them all at:
 
-https://github.com/slooob/turbolinks-animate.js/graphs/contributors
+https://github.com/jonhue/modalist.js/graphs/contributors
 
 ### Semantic Versioning
 
-turbolinks-animate.js follows Semantic Versioning 2.0 as defined at http://semver.org.
+Modalist follows Semantic Versioning 2.0 as defined at http://semver.org.
 
 ## License
 
