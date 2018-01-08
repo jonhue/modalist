@@ -1,6 +1,6 @@
 /**!
  * @fileOverview modalist.js - A powerful AJAX modal plugin extending iziModal
- * @version 1.0.3
+ * @version 1.0.4
  * @license
  * MIT License
  *
@@ -26,15 +26,9 @@
  */
 var Modalist;
 $(document).on( 'ready turbolinks:load', function() {
-    Modalist = new function(options) {
-
-        var defaults = {
-            iziModal: {}
-        };
-        options = $.extend( defaults, options );
+    Modalist = new function() {
 
         this.modal = $('#modalist');
-        // this.iziModal = $(this.modal).iziModal(options.iziModal);
         this.iziModal = $(this.modal).iziModal();
 
         $('.modalist--trigger').off('click');

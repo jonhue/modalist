@@ -109,14 +109,6 @@ Modalist.close();
 
 ### Options
 
-There are two sets of options you can pass to Modalist. Those who get passed on initialization and those who get passed on any subsequent calls of a function.
-
-#### Initialization
-
-**`ìziModal`:** Options hash utilized to initialize [iziModal](https://github.com/dolce/iziModal).
-
-#### Subsequent calls
-
 **`url`:** URL to fetch content of the modal from. Takes a string.
 
 **`form`:** Submit a form and use the response to populate the modal. Takes a string to specify a jQuery selector for the form or `false`.

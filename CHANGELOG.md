@@ -4,6 +4,11 @@
 
 * nothing yet
 
+### 1.0.4 - 2018/01/08
+
+* deprecations
+    * remove `iziModal` initialization option
+
 ### 1.0.3 - 2018/01/06
 
 * bugfixes
