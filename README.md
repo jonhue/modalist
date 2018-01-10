@@ -119,17 +119,17 @@ Modalist.close();
 
 Modalist emits events that allow you to track the navigation lifecycle and respond to content loading. Modalist fires events on the `$(document)` object.
 
-* `modalist:click` fires when you click a Modal enabled link to trigger a modal opening. The clicked element is the event target. Access the requested location with `event.data.url`.
+* `modalist:click` fires when you click a Modalist enabled link to trigger a modal opening. The clicked element is the event target. Access the requested location with `event.data.url`.
 
-* `modalist:request-start` fires before Modal issues a network request to fetch the modal content.
+* `modalist:request-start` fires before Modalist issues a network request to fetch the modal content.
 
 * `modalist:request-end` fires after the network request completes.
 
 * `modalist:before-render` fires before rendering the content.
 
-* `modalist:render` fires after Modal renders the content in the modal.
+* `modalist:render` fires after Modalist renders the content in the modal.
 
-* `modalist:load` fires after Modal completed preparing and opened the modal.
+* `modalist:load` fires after Modalist completed preparing and opened the modal.
 
 ---
 
