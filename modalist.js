@@ -122,7 +122,7 @@ $(document).on( 'ready turbolinks:load', function() {
 
             $(document).trigger('modalist:before-render');
             $(Modalist.modal).find('.iziModal-content').html(data);
-            $(document).trigger('modal:render');
+            $(document).trigger('modalist:render');
 
             $(Modalist.modal).iziModal('open');
             if ( $(Modalist.modal).height() + 60 > $(window).height() ) {
