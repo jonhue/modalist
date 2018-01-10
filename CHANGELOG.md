@@ -4,6 +4,11 @@
 
 * nothing yet
 
+### 1.0.5 - 2018/01/10
+
+* bugfixes
+    * fix `modalist:render` event
+
 ### 1.0.4 - 2018/01/08
 
 * deprecations

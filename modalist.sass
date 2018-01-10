@@ -1,6 +1,6 @@
 /**!
  * @fileOverview modalist.js - A powerful AJAX modal plugin extending iziModal
- * @version 1.0.4
+ * @version 1.0.5
  * @license
  * MIT License
  *
