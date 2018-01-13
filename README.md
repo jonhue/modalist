@@ -43,6 +43,12 @@ Utilize the [gem](https://github.com/jonhue/modalist) when using modalist.js wit
 
 ## Usage
 
+First make sure to add the necessary HTML markup to your `body` tag:
+
+```html
+<div id="modalist"></div>
+```
+
 ### Trigger a modal
 
 There are numerous ways to trigger/open a modal with Modalist.
@@ -54,7 +60,7 @@ One options is to open the modal by calling a JavaScript function - more on that
 The most common scenario is using a link to trigger the opening of a modal:
 
 ```haml
-= link_to 'Open modal', settings_modalist_url, class: 'modalist--trigger'
+<a class="modalist--trigger" href="https://jonhue.me/settings/modal">Open modal</a>
 ```
 
 You can use [data attributes](#options) to pass options customizing the modal.
@@ -64,9 +70,10 @@ You can use [data attributes](#options) to pass options customizing the modal.
 When you want to open a modal after submitting a form - this is as simple as it gets:
 
 ```haml
-= simple_form_for @setting, settings_modalist_url(id: @setting.id), method: :get do |f|
-    -# ...
-    = f.input :submit, input_html: { class: 'modalist--trigger', data: { modalist_form: true } }
+<form action="https://jonhue.me/settings/modal" method="GET">
+<!-- ... -->
+<input type="submit" class="modalist--trigger" data-modalist-form="true" />
+</form>
 ```
 
 You can use [data attributes](#options) to pass options customizing the modal.
@@ -76,7 +83,7 @@ You can use [data attributes](#options) to pass options customizing the modal.
 You can also trigger a modal from any other HTML element in your view:
 
 ```haml
-.modalist--trigger{ data: { modalist_url: settings_modalist_url } }
+<div class="modalist--trigger" data-modalist-url="https://jonhue.me/settings/modal"></div>
 ```
 
 You can use [data attributes](#options) to pass options customizing the modal.
@@ -88,14 +95,14 @@ Modalist's JavaScript component provides a set of functions to handle your modal
 #### Open modals
 
 ```js
-Modalist.open({ url: 'http://localhost:3000/settings/modal' });
+Modalist.open({ url: 'https://jonhue.me/settings/modal' });
 ```
 
 You can pass [options](#options) to customize the modal:
 
 ```js
 Modalist.open({
-    url: 'http://localhost:3000/settings/modal',
+    url: 'https://jonhue.me/settings/modal',
     form: false,
     fullScreen: false
 });
