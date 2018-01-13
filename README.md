@@ -22,6 +22,7 @@ Utilize the [gem](https://github.com/jonhue/modalist) when using modalist.js wit
 * [Information](#information)
 * [Usage](#usage)
     * [Trigger a modal](#trigger-a-modal)
+    * [Close a modal](#close-a-modal)
     * [Modalist functions](#modalist-functions)
     * [Options](#options)
     * [Events](#events)
