@@ -59,7 +59,7 @@ One options is to open the modal by calling a JavaScript function - more on that
 
 The most common scenario is using a link to trigger the opening of a modal:
 
-```haml
+```html
 <a class="modalist--trigger" href="https://jonhue.me/settings/modal">Open modal</a>
 ```
 
@@ -69,7 +69,7 @@ You can use [data attributes](#options) to pass options customizing the modal.
 
 When you want to open a modal after submitting a form - this is as simple as it gets:
 
-```haml
+```html
 <form action="https://jonhue.me/settings/modal" method="GET">
 <!-- ... -->
 <input type="submit" class="modalist--trigger" data-modalist-form="true" />
@@ -82,7 +82,7 @@ You can use [data attributes](#options) to pass options customizing the modal.
 
 You can also trigger a modal from any other HTML element in your view:
 
-```haml
+```html
 <div class="modalist--trigger" data-modalist-url="https://jonhue.me/settings/modal"></div>
 ```
 
