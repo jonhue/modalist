@@ -4,6 +4,11 @@
 
 * nothing yet
 
+### 1.1.0 - 2018/01/13
+
+* features
+    * add `modalist--closer` listener
+
 ### 1.0.5 - 2018/01/10
 
 * bugfixes

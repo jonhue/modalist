@@ -81,6 +81,12 @@ You can also trigger a modal from any other HTML element in your view:
 
 You can use [data attributes](#options) to pass options customizing the modal.
 
+### Close a modal
+
+Just add the class `modalist--closer` to an element. Whenever the element is the target of a click, the current modal will close.
+
+If it is a hyperlink or submit button and you also want to prevent the default behavior, use `data-izimodal-close="true"` instead.
+
 ### Modalist functions
 
 Modalist's JavaScript component provides a set of functions to handle your modals:
