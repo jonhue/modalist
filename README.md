@@ -55,7 +55,7 @@ First make sure to add the necessary HTML markup to your `body` tag:
 
 ```javascript
 import Modalist from 'modalist';
-Modalist.init();
+document.addEventListener( 'modalist:render', () => Modalist.init() );
 let modalist = new Modalist;
 ```
 
