@@ -35,13 +35,9 @@ class Modalist {
         delete options.element;
         let defaults = {
             transitionIn: 'fadeIn',
-            transitionOut: 'fadeOut',
-            fullScreen: false
+            transitionOut: 'fadeOut'
         };
         this._options = extend( {}, defaults, options );
-
-        if (this._options.fullScreen)
-            this._element.classList.add('modalist--full-screen');
     }
 
     get element() {

@@ -4,6 +4,13 @@
 
 * nothing yet
 
+### 2.0.0 - 2018/02/08
+
+* features
+    * remove jQuery and iziModal dependencies
+    * add a loader for asynchronous requests
+    * support synchronous modals
+
 ### 1.1.0 - 2018/01/13
 
 * features
