@@ -3,13 +3,11 @@
 ![NPM Version](https://img.shields.io/npm/v/modalist.svg)
 <img src="https://travis-ci.org/jonhue/modalist.js.svg?branch=master" />
 
-Modalist is a powerful ajaxified modal plugin. Here is how it works:
+Modalist is a powerful & lightweight (not necessarily but primarily ajaxified) modal plugin. Here is how it works:
 
 1) You trigger a modal opening from your frontend code
 2) Modalist fetches the modal contents with AJAX
 3) The modal opens
-
-Modalist does not reinvent the wheel and uses todays best modal-engine [iziModal.js](https://github.com/dolce/iziModal) to backup its code.
 
 Utilize the [gem](https://github.com/jonhue/modalist) when using modalist.js with Rails.
 
@@ -38,7 +36,7 @@ Utilize the [gem](https://github.com/jonhue/modalist) when using modalist.js wit
 
 **Size:** Modalist takes < 1kb gzipped.
 
-**Dependencies:** [jQuery](https://github.com/jquery/jquery), [iziModal.js](https://github.com/dolce/iziModal)
+**Dependencies:** [Animate.css](https://github.com/daneden/animate.css)
 
 ---
 
@@ -46,8 +44,25 @@ Utilize the [gem](https://github.com/jonhue/modalist) when using modalist.js wit
 
 First make sure to add the necessary HTML markup to your `body` tag:
 
+```javascript
+import Modalist from 'modalist';
+let modalist = new Modalist;
+```
+
+```sass
+@import "animate.css"
+@import "modalist/src/modalist"
+@import "modalist/src/modalist-theme"
+```
+
 ```html
-<div id="modalist"></div>
+<div id="modalist--overlay">
+    <div class="modalist--loader"></div>
+</div>
+<div class="modalist">
+    <div class="modalist--loader"></div>
+    <div class="modalist--content"></div>
+</div>
 ```
 
 ### Trigger a modal

@@ -1,0 +1,108 @@
+/**!
+ * @fileOverview modalist.js - A powerful AJAX modal plugin
+ * @version 2.0.0
+ * @license
+ * MIT License
+ *
+ * Copyright (c) 2018 Jonas Hübotter
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+$width: 37.5rem
+
+
+
+.modalist--loader
+    opacity: 0
+    display: none
+    width: 100%
+    align-items: center
+    justify-content: center
+    transition-property: all
+    &.modalist--shown
+        opacity: 1
+        display: flex
+
+
+#modalist--overlay
+    position: fixed
+    z-index: 99
+    opacity: 0
+    display: none
+    height: 100vh
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    transition-property: all
+    &.modalist--shown
+        opacity: 1
+        display: block
+    & > .modalist--loader
+        height: 100vh
+
+
+.modalist
+    position: fixed
+    z-index: 100
+    opacity: 0
+    display: none
+    width: $width
+    max-width: 90%
+    height: auto
+    max-height: calc(100vh - 30px)
+    overflow-y: auto
+    overflow-x: hidden
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+    transition-property: all
+    &.modalist--shown
+        opacity: 1
+        display: block
+    &.modalist--full-screen
+        width: 100%
+        max-width: 100%
+        height: 100vh
+        max-height: 100vh
+        left: 0
+        top: 0
+        transform: none
+    & > .modalist--loader
+        padding: 7.8125rem auto
+    & > .modalist--content
+        width: 100%
+        background: white
+        opacity: 0
+        display: none
+        transition-property: opacity
+        &.modalist--shown
+            opacity: 1
+            display: block
+        & > .modalist--content-header
+            width: 100%
+            display: flex
+            align-items: center
+            justify-content: space-between
+            .modalist--closer
+                display: flex
+                align-items: center
+                justify-content: center
+        & > .modalist--content-body
+            width: 100%
