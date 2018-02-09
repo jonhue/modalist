@@ -10,9 +10,11 @@ Modalist is a powerful & lightweight (not necessarily but primarily ajaxified) m
 3) Modalist fetches the modal contents with AJAX while showing a loader (skippable if not desired)
 4) The modal opens
 
-Utilize the [gem](https://github.com/jonhue/modalist) when using Modalist with Rails.
-
 [**Demo**](https://yaeme.com)
+
+#### Extensions
+
+* [Ruby on Rails](https://github.com/jonhue/modalist)
 
 ---
 
