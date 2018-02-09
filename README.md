@@ -160,7 +160,7 @@ modalist.close();
 
 #### Instance
 
-Options specified when new instance from the `Modalist` class:
+Options specified when creating a new instance from the `Modalist` class:
 
 ```javascript
 let modalist = new Modalist({ transitionIn: 'fadeIn' });
@@ -176,7 +176,7 @@ Options specified when opening a modal instance. Can be either passed as an opti
 
 * `url` URL to fetch modal content from. Takes a string.
 * `form` Submit a form and use the response to populate the modal. Takes a string to specify a selector for the form element.
-* `element` Modal query selector used for handling [multiple-modals](#multiple-modals). Accepts a query selector (string). Defaults to `'.modalist'`.
+* `element` Modal query selector used for handling [multiple-modals](#multiple-modals). Accepts a query selector (string). Defaults to `'.modalist'`. Can only be used as a data attribute.
 
 ### Events
 
