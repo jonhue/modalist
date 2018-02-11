@@ -67,8 +67,7 @@ $width: 37.5rem
     max-width: 90%
     height: auto
     max-height: calc(100vh - 30px)
-    overflow-y: auto
-    overflow-x: hidden
+    overflow: hidden
     left: 50%
     top: 50%
     transform: translate(-50%, -50%)
@@ -91,6 +90,7 @@ $width: 37.5rem
         background: white
         opacity: 0
         display: none
+        overflow: hidden
         transition-property: opacity
         &.modalist--shown
             opacity: 1
@@ -106,3 +106,5 @@ $width: 37.5rem
                 justify-content: center
         & > .modalist--content-body
             width: 100%
+            overflow-y: auto
+            overflow-x: hidden
