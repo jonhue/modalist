@@ -162,8 +162,6 @@ class Modalist {
     }
 
     load( urlOrForm, callback ) {
-        let modalist = this;
-
         triggerEvent( document, 'modalist:request-start' );
 
         let request = new XMLHttpRequest();
