@@ -57,7 +57,7 @@ First make sure to add the necessary HTML markup to your `body` tag:
 
 ```javascript
 import Modalist from 'modalist';
-document.addEventListener( 'modalist:render', () => Modalist.init() );
+document.addEventListener( 'ready modalist:render', () => Modalist.init() );
 let modalist = new Modalist;
 ```
 
@@ -208,13 +208,15 @@ let secondModal = new Modalist({ element: document.querySelector('#second-modal'
 ```
 
 ```html
-<div id="first-modal">
+<div class="modalist" id="first-modal">
     <!-- ... -->
 </div>
-<div id="second-modal">
+<div class="modalist" id="second-modal">
     <!-- ... -->
 </div>
 ```
+
+**Note:** You only need to add the `modalist--overlay` element once.
 
 Now just use the instance to call Modalist functions. You can specify the `data-modalist-element` attribute on you trigger elements to be able to trigger a specific modal directly from your HTML markup:
 
