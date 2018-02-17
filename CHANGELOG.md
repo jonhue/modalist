@@ -4,6 +4,11 @@
 
 * nothing yet
 
+### 2.0.2 - 2018/02/17
+
+* bugfixes
+    * fixed `display` property on `#modalist--overlay` element
+
 ### 2.0.1 - 2018/02/17
 
 * bugfixes

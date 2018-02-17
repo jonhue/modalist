@@ -1,6 +1,6 @@
 /**!
  * @fileOverview modalist.js - A powerful AJAX modal plugin
- * @version 2.0.1
+ * @version 2.0.2
  * @license
  * MIT License
  *
