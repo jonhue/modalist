@@ -1,6 +1,6 @@
 /**!
  * @fileOverview modalist.js - A powerful AJAX modal plugin
- * @version 2.0.0
+ * @version 2.0.1
  * @license
  * MIT License
  *
@@ -199,17 +199,19 @@ class Modalist {
     static init() {
         document.querySelectorAll('.modalist--trigger').forEach((element) => {
             element.removeEventListener( 'click', trigger );
-            element.addEventListener( 'click', trigger(event) => {
+            element.addEventListener( 'click', function trigger(event) {
                 event.preventDefault;
                 Modalist.find(document.querySelector(this.dataset.modalistElement || '.modalist')).trigger(this);
             });
         });
         document.querySelectorAll('.modalist--closer').forEach((element) => {
             element.removeEventListener( 'click', close );
-            element.addEventListener( 'click', close() => Modalist.find(document.querySelector(this.dataset.modalistElement || '.modalist')).close() );
+            element.addEventListener( 'click', function close() {
+                Modalist.find(document.querySelector(this.dataset.modalistElement || '.modalist')).close()
+            });
         });
         document.querySelector('#modalist--overlay').removeEventListener( 'click', close );
-        document.querySelector('#modalist--overlay').addEventListener( 'click', close() => {
+        document.querySelector('#modalist--overlay').addEventListener( 'click', function close() {
             Modalist.elements.forEach(( element, instance ) => instance.close() );
         });
     }
