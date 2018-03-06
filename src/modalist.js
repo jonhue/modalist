@@ -242,6 +242,4 @@ function extend() {
     return arguments[0];
 };
 
-window.Modalist = Modalist;
-window.elements = elements;
 export default Modalist;
