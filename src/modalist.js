@@ -1,6 +1,6 @@
 /**!
  * @fileOverview modalist.js - A powerful AJAX modal plugin
- * @version 2.0.2
+ * @version 2.0.3
  * @license
  * MIT License
  *
@@ -24,13 +24,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+let elements = [];
 class Modalist {
 
     constructor(options = {}) {
-        if ( typeof Modalist.elements == 'undefined' )
-            Modalist.elements = {};
-        Modalist.elements[element] = this;
-
         this._element = options.element || document.querySelector('.modalist');
         delete options.element;
         let defaults = {
@@ -38,6 +35,8 @@ class Modalist {
             transitionOut: 'fadeOut'
         };
         this._options = extend( {}, defaults, options );
+
+        elements.push(this);
     }
 
     get element() {
@@ -55,8 +54,8 @@ class Modalist {
     }
 
     trigger(element) {
-        let url = this.dataset.modalistUrl || this.getAttribute('href') || null,
-            form = document.querySelector(this.dataset.modalistForm) || null;
+        let url = element.dataset.modalistUrl || element.getAttribute('href') || null,
+            form = document.querySelector(element.dataset.modalistForm) || null;
 
         triggerEvent( document, 'modalist:click', { element: element, url: url, form: form } );
 
@@ -65,25 +64,25 @@ class Modalist {
             form: form
         });
     }
-    open( options = {} ) {
+    open(options = {}) {
         options = extend( {}, this.options, options );
 
         this.showOverlay();
         this.hideContent();
         if ( options.form || options.url ) {
-            if ( this.element.querySelector('.modalist--loader').length > 0 )
-                this.show();
             this.showLoader();
-            this.load( options.form || options.url, (data, status) => {
+            this.load( options.form || options.url, (status, data) => {
                 if ( status >= 200 && status < 400 ) {
                     this.render(data);
                 } else {
                     this.error( status, data );
                 };
                 this.hideLoader();
-                this.show();
-                this.element.querySelector('.modalist--content').classList.add('modalist--shown');
-                triggerEvent( document, 'modalist:load' );
+                setTimeout(() => {
+                    this.show();
+                    this.element.querySelector('.modalist--content').classList.add('modalist--shown');
+                    triggerEvent( document, 'modalist:load' );
+                }, 350);
             });
         } else {
             this.overflow();
@@ -104,13 +103,17 @@ class Modalist {
     }
 
     show() {
-        this.element.classList.remove( 'animated ' + this.options.transitionOut );
+        this.element.classList.remove('animated');
+        this.element.classList.remove(this.options.transitionOut);
         if ( !this.element.classList.contains('modalist--shown') )
-            this.element.classList.add( 'modalist--shown animated ' + this.options.transitionIn );
+            this.element.classList.add('modalist--shown');
+            this.element.classList.add('animated');
+            this.element.classList.add(this.options.transitionIn);
     }
     hide() {
-        this.element.classList.remove( 'modalist--shown ' + this.options.transitionIn );
+        this.element.classList.remove(this.options.transitionIn);
         this.element.classList.add(this.options.transitionOut);
+        setTimeout( () => this.element.classList.remove('modalist--shown'), 350 );
     }
     toggle() {
         if (this.element.classList.contains('modalist--shown'))
@@ -133,12 +136,10 @@ class Modalist {
     }
 
     showLoader() {
-        let loader = this.element.querySelector('.modalist--loader') || document.querySelector('#modalist--overlay > .modalist--loader');
-        loader.classList.add('modalist--shown');
+        document.querySelector('#modalist--overlay > .modalist--loader').classList.add('modalist--shown');
     }
     hideLoader() {
-        let loader = this.element.querySelector('.modalist--loader') || document.querySelector('#modalist--overlay > .modalist--loader');
-        loader.classList.remove('modalist--shown');
+        document.querySelector('#modalist--overlay > .modalist--loader').classList.remove('modalist--shown');
     }
     toggleLoader() {
         let loader = this.element.querySelector('.modalist--loader') || document.querySelector('#modalist--overlay > .modalist--loader');
@@ -171,13 +172,14 @@ class Modalist {
             request.open( urlOrForm.getAttribute('method').toUpperCase, urlOrForm.getAttribute('action'), true );
             request.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8' );
         };
-        request.onload = () => {
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        request.onload = function() {
             triggerEvent( document, 'modalist:request-end' );
-            callback( this.status, this.response );
+            callback( this.status, this.responseText );
         };
-        request.onerror = () => {
+        request.onerror = function() {
             triggerEvent( document, 'modalist:request-end' );
-            callback( this.status, this.response );
+            callback( this.status, this.responseText );
         };
         if ( typeof urlOrForm == 'string' )
             request.send()
@@ -198,26 +200,26 @@ class Modalist {
 
     static init() {
         document.querySelectorAll('.modalist--trigger').forEach((element) => {
-            element.removeEventListener( 'click', trigger );
+            // element.removeEventListener( 'click', trigger );
             element.addEventListener( 'click', function trigger(event) {
-                event.preventDefault;
+                event.preventDefault();
                 Modalist.find(document.querySelector(this.dataset.modalistElement || '.modalist')).trigger(this);
             });
         });
         document.querySelectorAll('.modalist--closer').forEach((element) => {
-            element.removeEventListener( 'click', close );
+            // element.removeEventListener( 'click', close );
             element.addEventListener( 'click', function close() {
                 Modalist.find(document.querySelector(this.dataset.modalistElement || '.modalist')).close()
             });
         });
-        document.querySelector('#modalist--overlay').removeEventListener( 'click', close );
+        // document.querySelector('#modalist--overlay').removeEventListener( 'click', close );
         document.querySelector('#modalist--overlay').addEventListener( 'click', function close() {
-            Modalist.elements.forEach(( element, instance ) => instance.close() );
+            elements.forEach(( instance ) => instance.close() );
         });
     }
 
     static find(element) {
-        return Modalist.elements.filter( ( el, instance ) => el == element );
+        return elements.filter( ( instance ) => instance.element == element )[0];
     }
 
 }
@@ -226,11 +228,11 @@ class Modalist {
 function triggerEvent( element, name, data = {} ) {
     if (window.CustomEvent) {
         let event = new CustomEvent( name, { detail: data } );
+        element.dispatchEvent(event);
     } else {
         let event = document.createEvent('CustomEvent');
         event.initCustomEvent( name, true, true, data );
     };
-    element.dispatchEvent(event);
 }
 function extend() {
     for ( let i=1; i<arguments.length; i++ )
@@ -240,5 +242,6 @@ function extend() {
     return arguments[0];
 };
 
-
+window.Modalist = Modalist;
+window.elements = elements;
 export default Modalist;
