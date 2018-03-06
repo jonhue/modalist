@@ -4,6 +4,13 @@
 
 * nothing yet
 
+### 2.0.3 - 2018/03/06
+
+* enhancements
+    * smoother animations & transitions
+* bugfixes
+    * fixed issues preventing modal from being displayed
+
 ### 2.0.2 - 2018/02/17
 
 * bugfixes
