@@ -1,6 +1,6 @@
 /**!
  * @fileOverview modalist.js - A powerful AJAX modal plugin
- * @version 2.0.2
+ * @version 2.0.3
  * @license
  * MIT License
  *
@@ -28,22 +28,11 @@ $width: 37.5rem
 
 
 
-.modalist--loader
-    opacity: 0
-    display: none
-    width: 100%
-    align-items: center
-    justify-content: center
-    transition-property: all
-    &.modalist--shown
-        opacity: 1
-        display: flex
-
-
 #modalist--overlay
     position: fixed
     z-index: 99
     opacity: 0
+    visibility: hidden
     display: none
     height: 100vh
     width: 100%
@@ -53,8 +42,24 @@ $width: 37.5rem
     &.modalist--shown
         opacity: 1
         display: flex
+        visibility: visible
     & > .modalist--loader
         height: 100vh
+        opacity: 0
+        display: none
+        visibility: hidden
+        width: 100%
+        align-items: center
+        justify-content: center
+        transition-property: all
+        &.modalist--shown
+            opacity: 1
+            display: flex
+            visibility: visible
+        svg
+            padding: .5rem
+            width: 2rem
+            height: 2rem
 
 
 .modalist
@@ -82,8 +87,6 @@ $width: 37.5rem
         left: 0
         top: 0
         transform: none
-    & > .modalist--loader
-        padding: 7.8125rem auto
     & > .modalist--content
         width: 100%
         background: white
