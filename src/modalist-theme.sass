@@ -1,6 +1,6 @@
 /**!
  * @fileOverview modalist.js - A powerful AJAX modal plugin
- * @version 2.0.2
+ * @version 2.0.3
  * @license
  * MIT License
  *
@@ -24,28 +24,38 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-.modalist--loader
+=modalist--transition
+    transition: all .35s ease-out
+    animation-duration: .35s !important
+    animation-timing-function: ease-out
+
 
 
 #modalist--overlay
     background: transparentize(#E7ECF0, 0.13)
-    transition-duration: .35s
-    transition-timing-function: ease-out
+    +modalist--transition
+    .modalist--loader
+        +modalist--transition
+        svg
+            background: white
+            box-shadow: 0 1px 3px 0 rgba(#657786, .05)
+            border-radius: .1875rem
 
 
 .modalist
     box-shadow: 0 1px 3px 0 rgba(#657786, .05)
     border: 1px solid #DCE2E7
+    background: white
     border-radius: 3px !important
-    transition-duration: .35s
-    transition-timing-function: ease-out
+    +modalist--transition
     &.modalist--full-screen
         box-shadow: none
         border: none
         border-radius: 0
     & > .modalist--content
-        transition-duration: .35s
-        transition-timing-function: ease-out
+        +modalist--transition
+        animation-duration: .35s !important
+        animation-timing-function: ease-out !important
         & > .modalist--content-header
             background: #FCFCFC
             border-radius: 3px 3px 0 0
