@@ -4,6 +4,11 @@
 
 * nothing yet
 
+### 2.0.4 - 2018/03/07
+
+* enhancements
+    * add transition to closer element
+
 ### 2.0.3 - 2018/03/06
 
 * enhancements
