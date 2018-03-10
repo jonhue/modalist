@@ -61,35 +61,49 @@ class Modalist {
 
         this.open({
             url: url,
-            form: form
+            form: form,
+            modalIsAlreadyOpen: isDescendant( this.element, element )
         });
     }
     open(options = {}) {
         options = extend( {}, this.options, options );
 
-        this.showOverlay();
-        this.hideContent();
+        if (options.modalIsAlreadyOpen) {
+            this.hideInnerContent();
+        } else {
+            this.showOverlay();
+            this.hideContent();
+        }
         if ( options.form || options.url ) {
-            this.showLoader();
+            if (!options.modalIsAlreadyOpen)
+                this.showLoader();
             this.load( options.form || options.url, (status, data) => {
                 if ( status >= 200 && status < 400 ) {
-                    this.render(data);
+                    this.render( data, { modalIsAlreadyOpen: options.modalIsAlreadyOpen } );
                 } else {
                     this.error( status, data );
                 };
-                this.hideLoader();
-                setTimeout(() => {
-                    this.show();
-                    this.element.querySelector('.modalist--content').classList.add('modalist--shown');
+                if (options.modalIsAlreadyOpen) {
                     triggerEvent( document, 'modalist:load' );
-                }, 350);
+                } else {
+                    this.hideLoader();
+                    setTimeout(() => {
+                        this.show();
+                        this.showContent();
+                        triggerEvent( document, 'modalist:load' );
+                    }, 350);
+                }
             });
         } else {
             this.overflow();
-            this.show();
-            this.showContent();
+            if (options.modalIsAlreadyOpen) {
+                this.showInnerContent();
+            } else {
+                this.show();
+                this.showContent();
+            }
             triggerEvent( document, 'modalist:load' );
-        };
+        }
     }
     overflow() {
         this.element.classList.remove('modalist--overflow');
@@ -157,9 +171,31 @@ class Modalist {
     }
     toggleContent() {
         if (this.element.querySelector('.modalist--content').classList.contains('modalist--shown'))
-            this.hideLoader()
+            this.hideContent()
         else
-            this.showLoader();
+            this.showContent();
+    }
+
+    showInnerContent() {
+        Array.from(this.element.querySelector('.modalist--content').children).forEach( (element) => {
+            element.classList.add('animated');
+            element.classList.add('fadeIn');
+            element.classList.remove('fadeOut');
+            element.classList.remove('hidden');
+        });
+    }
+    hideInnerContent() {
+        Array.from(this.element.querySelector('.modalist--content').children).forEach( (element) => {
+            element.classList.add('animated');
+            element.classList.add('fadeOut');
+            element.classList.remove('fadeIn');
+        });
+    }
+    toggleInnerContent() {
+        if (this.element.querySelector('.modalist--content').classList.contains('modalist--shown'))
+            this.hideInnerContent()
+        else
+            this.showInnerContent();
     }
 
     load( urlOrForm, callback ) {
@@ -186,9 +222,13 @@ class Modalist {
         else
             request.send(urlOrForm.serialize);
     }
-    render(data) {
+    render( data, options = {} ) {
         triggerEvent( document, 'modalist:before-render' );
         this.element.querySelector('.modalist--content').innerHTML = data;
+        if (options.modalIsAlreadyOpen) {
+            Array.from(this.element.querySelector('.modalist--content').children).forEach( (element) => element.classList.add('hidden') );
+            this.showInnerContent();
+        }
         this.overflow();
         triggerEvent( document, 'modalist:render' );
     }
@@ -200,22 +240,25 @@ class Modalist {
 
     static init() {
         document.querySelectorAll('.modalist--trigger').forEach((element) => {
-            // element.removeEventListener( 'click', trigger );
-            element.addEventListener( 'click', function trigger(event) {
-                event.preventDefault();
-                Modalist.find(document.querySelector(this.dataset.modalistElement || '.modalist')).trigger(this);
-            });
+            element.removeEventListener( 'click', trigger );
+            element.addEventListener( 'click', trigger );
         });
+        function trigger() {
+            event.preventDefault();
+            Modalist.find(document.querySelector(this.dataset.modalistElement || '.modalist')).trigger(this);
+        };
         document.querySelectorAll('.modalist--closer').forEach((element) => {
-            // element.removeEventListener( 'click', close );
-            element.addEventListener( 'click', function close() {
-                Modalist.find(document.querySelector(this.dataset.modalistElement || '.modalist')).close()
-            });
+            element.removeEventListener( 'click', closeModal );
+            element.addEventListener( 'click', closeModal );
         });
-        // document.querySelector('#modalist--overlay').removeEventListener( 'click', close );
-        document.querySelector('#modalist--overlay').addEventListener( 'click', function close() {
+        function closeModal() {
+            Modalist.find(document.querySelector(this.dataset.modalistElement || '.modalist')).close()
+        }
+        document.querySelector('#modalist--overlay').removeEventListener( 'click', closeOverlay );
+        document.querySelector('#modalist--overlay').addEventListener( 'click', closeOverlay );
+        function closeOverlay() {
             elements.forEach(( instance ) => instance.close() );
-        });
+        };
     }
 
     static find(element) {
@@ -240,6 +283,16 @@ function extend() {
             if ( arguments[i].hasOwnProperty(key) )
                 arguments[0][key] = arguments[i][key];
     return arguments[0];
-};
+}
+function isDescendant( parent, child ) {
+     var node = child.parentNode;
+     while ( node != null ) {
+         if ( node == parent ) {
+             return true;
+         }
+         node = node.parentNode;
+     }
+     return false;
+}
 
 export default Modalist;
