@@ -4,6 +4,13 @@
 
 * nothing yet
 
+### 2.1.0 - 2018/03/10
+
+* features
+    * open modals from inside a modal
+* bugfixes
+    * fixed multiple event listeners initialized on the same element
+
 ### 2.0.4 - 2018/03/07
 
 * enhancements
