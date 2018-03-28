@@ -4,6 +4,11 @@
 
 * nothing yet
 
+### 2.1.2 - 2018/03/28
+
+* enhancements
+    * improved `border-radius` in Modalist theme
+
 ### 2.1.1 - 2018/03/10
 
 * enhancements
