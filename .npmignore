@@ -1,5 +1,9 @@
-.github
-.travis.yml
-CODE_OF_CONDUCT.md
-CONTRIBUTING.md
-yarn.lock
+/.github
+/node_modules
+/.gitignore
+/.travis.yml
+/CODE_OF_CONDUCT.md
+/CONTRIBUTING.md
+/PULL_REQUEST_TEMPLATE.md
+/webpack.config.js
+/yarn.lock

@@ -3,14 +3,34 @@
   "version": "2.1.2",
   "description": "A powerful & (really) lightweight AJAX modal plugin",
   "main": "src/modalist.js",
+  "homepage": "https://jonhue.me/repos/modalist",
   "bugs": {
-    "url": "https://github.com/jonhue/modalist.js/issues",
+    "url": "https://github.com/jonhue/modalist/issues",
     "email": "me@jonhue.me"
   },
-  "repository": "https://github.com/jonhue/modalist.js",
+  "repository": "https://github.com/jonhue/modalist",
   "author": "Jonas Hübotter <me@jonhue.me>",
   "license": "MIT",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "stylelint": "stylelint src/**/*.css src/**/*.scss",
+    "eslint": "eslint src/**/*.js",
+    "test": "yarn run build && yarn run stylelint && yarn run eslint"
+  },
   "dependencies": {
     "animate.css": "^3.7.0"
+  },
+  "devDependencies": {
+    "css-loader": "^1.0.0",
+    "eslint": "^5.2.0",
+    "node-sass": "^4.9.2",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
+    "stylelint": "^9.3.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-order": "^0.8.1",
+    "stylelint-scss": "^3.2.0",
+    "webpack": "^4.16.1",
+    "webpack-cli": "^3.1.0"
   }
 }

@@ -1,0 +1,78 @@
+@mixin modalist--transition {
+  transition: all .35s ease-out;
+  animation-duration: .35s !important;
+  animation-timing-function: ease-out;
+
+#modalist--overlay {
+  background: transparentize(#E7ECF0, 0.13);
+  @include modalist--transition;
+  .modalist--loader {
+    @include modalist--transition;
+    svg {
+      background: white;
+      box-shadow: 0 1px 3px 0 rgba(#657786, .05);
+      border-radius: .1875rem;
+    }
+  }
+}
+
+.modalist {
+  box-shadow: 0 1px 3px 0 rgba(#657786, .05);
+  border: 1px solid #DCE2E7;
+  background: white;
+  border-radius: 3px !important;
+  @include modalist--transition;
+  &.modalist--full-screen {
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+  }
+  & > .modalist--content {
+    @include modalist--transition;
+    animation-duration: .35s !important;
+    animation-timing-function: ease-out !important;
+    & > * {
+      animation-duration: .35s !important;
+    }
+    & > .modalist--content-header {
+      background: #FCFCFC;
+      padding: 1.25rem;
+      border-bottom: 1px solid #DCE2E7;
+      h4, p {
+        margin: 0;
+      }
+      h4 {
+        line-height: 1.58;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-weight: 600;
+        font-size: 1.125rem;
+        color: #14171A;
+        @media (min-width: 800px) {
+          font-size: 1.25rem;
+        }
+      }
+      p {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        color: #3d4553;
+        font-weight: normal;
+        letter-spacing: -.003em;
+        font-size: .875rem;
+        line-height: 1.75;
+        @media (min-width: 800px) {
+          font-size: 1rem;
+        }
+      }
+      .modalist--closer {
+        opacity: .85;
+        @include modalist--transition;
+        &:hover, &:focus {
+          opacity: 1;
+        }
+      }
+    }
+    & > .modalist--content-body {
+      background: white;
+      padding: 1.25rem;
+    }
+  }
+}
