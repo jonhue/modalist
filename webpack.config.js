@@ -1,4 +1,9 @@
 const path = require('path');
+const glob = require('glob');
+
+const entry = glob.sync('./src/themes/*.scss').reduce((x, y) => Object.assign(x, {
+  [y.replace('src/', '').replace('.scss', '')]: y,
+}), { modalist: './src/modalist.scss' });
 
 module.exports = [{
   entry: {
@@ -9,11 +14,9 @@ module.exports = [{
     path: path.resolve(__dirname, 'dist')
   }
 }, {
-  entry: {
-    'modalist.scss': './src/modalist.scss'
-  },
+  entry,
   output: {
-    filename: 'modalist.min.css',
+    filename: '[name].min.css',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
