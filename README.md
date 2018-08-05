@@ -57,7 +57,7 @@ let modalist = new Modalist;
 ```html
 <div class="modalist--overlay">
   <div class="modalist--loader">
-    <img src="loader.png" alt="loader"/>
+    <img src="loader.png" alt="loader" />
   </div>
 </div>
 <div class="modalist">

@@ -11,13 +11,13 @@ module.exports = [{
   },
   output: {
     filename: 'modalist.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'docs', 'dist')
   }
 }, {
   entry,
   output: {
     filename: '[name].min.css',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'docs', 'dist')
   },
   module: {
     rules: [{
