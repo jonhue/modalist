@@ -1,6 +1,5 @@
 let elements = [];
 class Modalist {
-
   constructor(options = {}) {
     this._element = options.element || document.querySelector('.modalist');
     delete options.element;
@@ -239,9 +238,7 @@ class Modalist {
   static find(element) {
     return elements.filter((instance) => instance.element == element)[0];
   }
-
 }
-
 
 function triggerEvent(element, name, data = {}) {
   if (window.CustomEvent) {
@@ -252,6 +249,7 @@ function triggerEvent(element, name, data = {}) {
     event.initCustomEvent(name, true, true, data);
   }
 }
+
 function extend() {
   for (let i = 1; i < arguments.length; i++)
     for (let key in arguments[i])
@@ -259,6 +257,7 @@ function extend() {
         arguments[0][key] = arguments[i][key];
   return arguments[0];
 }
+
 function isDescendant(parent, child) {
   var node = child.parentNode;
   while (node != null) {
