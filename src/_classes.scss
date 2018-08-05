@@ -1,4 +1,4 @@
-#modalist--overlay {
+.modalist--overlay {
   align-items: center;
   display: none;
   height: 100vh;
@@ -71,7 +71,7 @@
   }
 
   & > .modalist--content {
-    background: white;
+    background: #fff;
     display: none;
     opacity: 0;
     overflow: hidden;
