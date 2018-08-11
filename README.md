@@ -1,6 +1,6 @@
 # Modalist
 
-![NPM Version](https://img.shields.io/npm/v/modalist.svg) ![Travis](https://travis-ci.org/jonhue/modalist.js.svg?branch=master)
+![NPM Version](https://img.shields.io/npm/v/modalist.svg) ![Travis](https://travis-ci.org/jonhue/modalist.svg?branch=master)
 
 Modalist is a powerful & lightweight (not necessarily but primarily ajaxified) modal plugin. Here is how it works:
 
