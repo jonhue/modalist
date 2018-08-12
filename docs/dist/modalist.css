@@ -8,15 +8,12 @@
   transition-property: all;
   visibility: hidden;
   width: 100%;
-  z-index: 99;
-
-  &.modalist--shown {
+  z-index: 99; }
+  .modalist--overlay.modalist--shown {
     display: flex;
     opacity: 1;
-    visibility: visible;
-  }
-
-  & > .modalist--loader {
+    visibility: visible; }
+  .modalist--overlay > .modalist--loader {
     align-items: center;
     display: none;
     height: 100vh;
@@ -24,21 +21,15 @@
     opacity: 0;
     transition-property: all;
     visibility: hidden;
-    width: 100%;
-
-    &.modalist--shown {
+    width: 100%; }
+    .modalist--overlay > .modalist--loader.modalist--shown {
       display: flex;
       opacity: 1;
-      visibility: visible;
-    }
-
-    svg {
+      visibility: visible; }
+    .modalist--overlay > .modalist--loader svg {
       height: 2rem;
       padding: .5rem;
-      width: 2rem;
-    }
-  }
-}
+      width: 2rem; }
 
 .modalist {
   display: none;
@@ -52,53 +43,39 @@
   top: 50%;
   transform: translate(-50%, -50%);
   transition-property: all;
-  width: $width;
-  z-index: 100;
-
-  &.modalist--shown {
+  width: 37.5rem;
+  z-index: 100; }
+  .modalist.modalist--shown {
     display: block;
-    opacity: 1;
-  }
-
-  &.modalist--full-screen {
+    opacity: 1; }
+  .modalist.modalist--full-screen {
     height: 100vh;
     left: 0;
     max-height: 100vh;
     max-width: 100%;
     top: 0;
     transform: none;
-    width: 100%;
-  }
-
-  & > .modalist--content {
+    width: 100%; }
+  .modalist > .modalist--content {
     background: #fff;
     display: none;
     opacity: 0;
     overflow: hidden;
     transition-property: opacity;
-    width: 100%;
-
-    &.modalist--shown {
+    width: 100%; }
+    .modalist > .modalist--content.modalist--shown {
       display: block;
-      opacity: 1;
-    }
-
-    & > .modalist--content-header {
+      opacity: 1; }
+    .modalist > .modalist--content > .modalist--content-header {
       align-items: center;
       display: flex;
-      justify-content: space-between;
-
-      .modalist--closer {
+      justify-content: space-between; }
+      .modalist > .modalist--content > .modalist--content-header .modalist--closer {
         align-items: center;
         display: flex;
-        justify-content: center;
-      }
-    }
-
-    & > .modalist--content-body {
+        justify-content: center; }
+    .modalist > .modalist--content > .modalist--content-body {
       overflow-x: hidden;
       overflow-y: auto;
-      width: 100%;
-    }
-  }
-}
+      width: 100%; }
+

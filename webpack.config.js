@@ -3,8 +3,11 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const entry = glob.sync('./src/themes/*.scss').reduce((x, y) => Object.assign(x, {
-  [y.replace('src/', '').replace('.scss', '')]: y,
-}), { modalist: './src/modalist.scss', main: './src/index.js' });
+  ['../docs/dist/' + y.replace('src/', '').replace('.scss', '')]: y,
+}), {
+  '../docs/dist/modalist': './src/modalist.scss',
+  '../docs/dist/main': './docs/index.js'
+});
 
 module.exports = {
   entry,
@@ -23,7 +26,6 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
               sourceMap: true,
               importLoader: 2
             }
