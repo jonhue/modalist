@@ -3,26 +3,97 @@
   <head>
     <title>Modalist - A powerful & (really) lightweight AJAX modal plugin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="dist/modalist.min.css" type="text/css" rel="stylesheet" />
-    <link href="dist/themes/default.min.css" type="text/css" rel="stylesheet" />
+    <link href="dist/modalist.css" type="text/css" rel="stylesheet" />
+    <link href="dist/themes/default.css" type="text/css" rel="stylesheet" />
     <link href="index.css" type="text/css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
-    <script src="dist/modalist.js"></script>
-    <script src="index.js"></script>
   </head>
   <body>
-    <h1>Modalist</h1>
-    <h3>A powerful & (really) lightweight AJAX modal plugin</h3>
-    <div class="modalist--trigger">Open modal</div>
     <div class="modalist--overlay">
       <div class="modalist--loader">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24"><g transform="translate(0, 0)"><g class="nc-loop_bars-rotate-24" transform="rotate(270 12 12)"> <rect x="11" fill="#000" width="2" height="6"></rect> <rect x="17.3639603" y="2.636039" transform="matrix(0.7071068 0.7071068 -0.7071068 0.7071068 9.3639612 -11.3345242)" fill="#000" width="2" height="6" style="opacity: 0.4;"></rect> <rect x="18" y="11" fill="#000" width="6" height="2" style="opacity: 0.4;"></rect> <rect x="17.3639603" y="15.3639612" transform="matrix(-0.7071068 0.7071068 -0.7071068 -0.7071068 44.3345222 18.3639603)" fill="#000" width="2" height="6" style="opacity: 0.4;"></rect> <rect x="11" y="18" fill="#000" width="2" height="6" style="opacity: 0.4;"></rect> <rect x="4.6360388" y="15.3639612" transform="matrix(-0.7071068 -0.7071068 0.7071068 -0.7071068 -3.363961 35.3345222)" fill="#000" width="2" height="6" style="opacity: 0.4;"></rect> <rect x="0" y="11" fill="#000" width="6" height="2" style="opacity: 0.5;"></rect> <rect x="4.6360388" y="2.636039" transform="matrix(0.7071068 -0.7071068 0.7071068 0.7071068 -2.3345237 5.6360388)" fill="#000" width="2" height="6" style="opacity: 0.8;"></rect> </g> <script>!function(){function t(t){this.element=t,this.animationId,this.start=null,this.init()}if(!window.requestAnimationFrame){var i=null;window.requestAnimationFrame=function(t,n){var e=(new Date).getTime();i||(i=e);var a=Math.max(0,16-(e-i)),o=window.setTimeout(function(){t(e+a)},a);return i=e+a,o}}t.prototype.init=function(){var t=this;this.animationId=window.requestAnimationFrame(t.triggerAnimation.bind(t))},t.prototype.reset=function(){var t=this;window.cancelAnimationFrame(t.animationId)},t.prototype.triggerAnimation=function(t){var i=this;this.start||(this.start=t);var n=t-this.start;800&gt;n||(this.start=this.start+800),this.element.setAttribute("transform","rotate("+parseInt(Math.min(n/100,8))%8*45+" 12 12)");if(document.documentElement.contains(this.element))window.requestAnimationFrame(i.triggerAnimation.bind(i))};var n=document.getElementsByClassName("nc-loop_bars-rotate-24"),e=[];if(n)for(var a=0;n.length&gt;a;a++)!function(i){e.push(new t(n[i]))}(a);document.addEventListener("visibilitychange",function(){"hidden"==document.visibilityState?e.forEach(function(t){t.reset()}):e.forEach(function(t){t.init()})})}();</script></g></svg>
       </div>
     </div>
-    <div class="modalist">
-      <div class="modalist--header">Hi!</div>
-      <div class="modalist--content">I'm a modalist modal.</div>
+
+    <section id="hero">
+      <h1>Modalist</h1>
+      <h3>A powerful & (really) lightweight AJAX modal plugin</h3>
+      <div class="modalist--trigger" data-modalist-element="#classic">Open modal</div>
+    </section>
+
+    <p>More modal styles ...</p>
+    <section>
+      <h3>Subtitles</h3>
+      <p>Use subtitles to give users more context or provide useful hints.</p>
+      <div class="modalist--trigger" data-modalist-element="#subtitle">Open modal</div>
+    </section>
+    <section>
+      <h3>Full screen</h3>
+      <p>More modal styles ...</p>
+      <div class="modalist--trigger" data-modalist-element="#full-screen">Open modal</div>
+    </section>
+    <section>
+      <h3>AJAXified</h3>
+      <p>More modal styles ...</p>
+      <div class="modalist--trigger" data-modalist-element="#ajax">Open modal</div>
+    </section>
+
+    <div class="modalist" id="classic">
+      <div class="modalist--content">
+        <div class="modalist--content-header">
+          <h4>Modalist Classic</h4>
+          <div class="wrapper">
+            <div class="modalist--closer"  data-modalist-element="#classic">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" width="24" height="24"><title>small remove</title><g class="nc-icon-wrapper" stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" fill="#bbb" stroke="#bbb"><line fill="none" stroke="#bbb" stroke-miterlimit="10" x1="16" y1="8" x2="8" y2="16"/> <line fill="none" stroke="#bbb" stroke-miterlimit="10" x1="16" y1="16" x2="8" y2="8"/></g></svg>
+            </div>
+          </div>
+        </div>
+        <div class="modalist--content-body">Hi! I'm a modalist modal.</div>
+      </div>
     </div>
+    <div class="modalist" id="subtitle">
+      <div class="modalist--content">
+        <div class="modalist--content-header">
+          <div class="wrapper">
+            <h4>Modalist Classic</h4>
+            <p>Subtitle</p>
+          </div>
+          <div class="wrapper">
+            <div class="modalist--closer"  data-modalist-element="#subtitle">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" width="24" height="24"><title>small remove</title><g class="nc-icon-wrapper" stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" fill="#bbb" stroke="#bbb"><line fill="none" stroke="#bbb" stroke-miterlimit="10" x1="16" y1="8" x2="8" y2="16"/> <line fill="none" stroke="#bbb" stroke-miterlimit="10" x1="16" y1="16" x2="8" y2="8"/></g></svg>
+            </div>
+          </div>
+        </div>
+        <div class="modalist--content-body">Hi! I'm a modalist modal.</div>
+      </div>
+    </div>
+    <div class="modalist modalist--full-screen" id="full-screen">
+      <div class="modalist--content">
+        <div class="modalist--content-header">
+          <h4>Modalist Classic</h4>
+          <div class="wrapper">
+            <div class="modalist--closer" data-modalist-element="#full-screen">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" width="24" height="24"><title>small remove</title><g class="nc-icon-wrapper" stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" fill="#bbb" stroke="#bbb"><line fill="none" stroke="#bbb" stroke-miterlimit="10" x1="16" y1="8" x2="8" y2="16"/> <line fill="none" stroke="#bbb" stroke-miterlimit="10" x1="16" y1="16" x2="8" y2="8"/></g></svg>
+            </div>
+          </div>
+        </div>
+        <div class="modalist--content-body">Hi! I'm a modalist modal.</div>
+      </div>
+    </div>
+    <div class="modalist" id="ajax">
+      <div class="modalist--content">
+        <div class="modalist--content-header">
+          <h4>Modalist Classic</h4>
+          <div class="wrapper">
+            <div class="modalist--closer" data-modalist-element="#ajax">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" width="24" height="24"><title>small remove</title><g class="nc-icon-wrapper" stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" fill="#bbb" stroke="#bbb"><line fill="none" stroke="#bbb" stroke-miterlimit="10" x1="16" y1="8" x2="8" y2="16"/> <line fill="none" stroke="#bbb" stroke-miterlimit="10" x1="16" y1="16" x2="8" y2="8"/></g></svg>
+            </div>
+          </div>
+        </div>
+        <div class="modalist--content-body">Placeholder</div>
+      </div>
+    </div>
+    <script src="dist/main.js"></script>
   </body>
 </html>

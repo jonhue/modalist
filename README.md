@@ -44,7 +44,8 @@ First make sure to add the necessary HTML markup to your `body` tag:
 ```javascript
 import Modalist from 'modalist';
 
-document.addEventListener('DOMContentLoaded modalist:render', () => Modalist.init());
+document.addEventListener('DOMContentLoaded', () => Modalist.init());
+document.addEventListener('modalist:render', () => Modalist.init());
 let modalist = new Modalist;
 ```
 

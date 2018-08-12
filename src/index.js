@@ -111,26 +111,26 @@ class Modalist {
   }
 
   showOverlay() {
-    document.querySelector('#modalist--overlay').classList.add('modalist--shown');
+    document.querySelector('.modalist--overlay').classList.add('modalist--shown');
   }
   hideOverlay() {
-    document.querySelector('#modalist--overlay').classList.remove('modalist--shown');
+    document.querySelector('.modalist--overlay').classList.remove('modalist--shown');
   }
   toggleOverlay() {
-    if (document.querySelector('#modalist--overlay').classList.contains('modalist--shown'))
+    if (document.querySelector('.modalist--overlay').classList.contains('modalist--shown'))
       this.hideOverlay();
     else
       this.showOverlay();
   }
 
   showLoader() {
-    document.querySelector('#modalist--overlay > .modalist--loader').classList.add('modalist--shown');
+    document.querySelector('.modalist--overlay > .modalist--loader').classList.add('modalist--shown');
   }
   hideLoader() {
-    document.querySelector('#modalist--overlay > .modalist--loader').classList.remove('modalist--shown');
+    document.querySelector('.modalist--overlay > .modalist--loader').classList.remove('modalist--shown');
   }
   toggleLoader() {
-    let loader = this.element.querySelector('.modalist--loader') || document.querySelector('#modalist--overlay > .modalist--loader');
+    let loader = this.element.querySelector('.modalist--loader') || document.querySelector('.modalist--overlay > .modalist--loader');
     if (loader.classList.contains('modalist--shown'))
       this.hideLoader();
     else
@@ -228,8 +228,8 @@ class Modalist {
     function closeModal() {
       Modalist.find(document.querySelector(this.dataset.modalistElement || '.modalist')).close();
     }
-    document.querySelector('#modalist--overlay').removeEventListener('click', closeOverlay);
-    document.querySelector('#modalist--overlay').addEventListener('click', closeOverlay);
+    document.querySelector('.modalist--overlay').removeEventListener('click', closeOverlay);
+    document.querySelector('.modalist--overlay').addEventListener('click', closeOverlay);
     function closeOverlay() {
       elements.forEach((instance) => instance.close());
     }

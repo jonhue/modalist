@@ -3,24 +3,47 @@
 @import url('https://cdn.rawgit.com/daneden/animate.css/940e4aef/animate.min.css');
 
 body {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
   font-family: "Inter UI", sans-serif;
   font-size: 1.2em;
-  justify-content: center;
   height: 100vh;
-  padding: 2em;
 }
 
-h1, h3 {
-  line-height: 1.75;
+body > p {
+  color: #bbb;
   text-align: center;
+}
+
+h1 {
+  margin-bottom: 0.2em;
 }
 
 h3 {
   font-weight: 500;
   margin-top: 0;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 85%;
+  padding: 2em;
+  width: 35em;
+}
+
+section > p {
+  margin-top: 0;
+}
+
+section#hero {
+  min-height: 80vh;
+}
+
+section#hero h1,
+section#hero h3 {
+  line-height: 1.75;
+  text-align: center;
 }
 
 .modalist--trigger {
@@ -29,8 +52,14 @@ h3 {
   color: #fff;
   cursor: pointer;
   padding: 0.9em 1em;
-  margin-top: 1.5em;
+  margin-top: 0.8em;
+  margin-right: auto;
   transition: all 0.2s ease-out;
+}
+
+section#hero .modalist--trigger {
+  margin-top: 1.5em;
+  margin-left: auto;
 }
 
 .modalist--trigger:active,

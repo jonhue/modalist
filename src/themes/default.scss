@@ -1,6 +1,6 @@
 @import "../mixins";
 
-#modalist--overlay {
+.modalist--overlay {
   @include modalist--transition;
 
   background: transparentize(#e7ecf0, 0.13);
@@ -78,7 +78,8 @@
       .modalist--closer {
         @include modalist--transition;
 
-        opacity: 0.85;
+        cursor: pointer;
+        opacity: 0.8;
 
         &:hover,
         &:focus {
