@@ -2,16 +2,18 @@
 
 ![NPM Version](https://img.shields.io/npm/v/modalist.svg) ![Travis](https://travis-ci.org/jonhue/modalist.svg?branch=master)
 
-Modalist is a powerful & lightweight (not necessarily but primarily ajaxified) modal plugin. Here is how it works:
+Modalist is a powerful & lightweight (asynchronous) modal plugin. Here is how it works:
 
 1) You create a distinct Modalist object for every modal style.
 2) You trigger a modal from your frontend code passing custom parameters
-3) Modalist fetches the modal contents with AJAX while showing a loader (skippable if not desired)
+3) Modalist fetches the modal contents asynchronously while showing a loader (skippable if not desired)
 4) The modal opens
 
 #### Extensions
 
 * [Ruby on Rails](https://github.com/jonhue/modalist-ruby)
+
+[**Demo**](https://jonhue.github.io/modalist)
 
 ---
 
@@ -19,7 +21,7 @@ Modalist is a powerful & lightweight (not necessarily but primarily ajaxified) m
 
 * [Usage](#usage)
   * [Trigger a modal](#trigger-a-modal)
-    * [Asynchronous (AJAX)](#asynchronous-ajax)
+    * [Asynchronous](#asynchronous)
     * [Synchronous](#synchronous)
   * [Close a modal](#close-a-modal)
   * [Functions](#functions)
@@ -72,7 +74,7 @@ Let's see how to trigger modals from your HTML markup.
 
 Learn more about opening modals from JavaScript [here](#functions).
 
-#### Asynchronous (AJAX)
+#### Asynchronous
 
 Load modal contents from a source.
 
