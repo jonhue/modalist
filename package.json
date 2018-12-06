@@ -1,7 +1,7 @@
 {
   "name": "modalist",
   "version": "2.1.4",
-  "description": "A powerful & (really) lightweight AJAX modal plugin",
+  "description": "A powerful & (really) lightweight asynchronous modal plugin",
   "main": "src/index.js",
   "homepage": "https://jonhue.me/repos/modalist",
   "bugs": {
