@@ -33,6 +33,6 @@
     "stylelint-order": "^1.0.0",
     "stylelint-scss": "^3.18.0",
     "webpack": "^4.16.1",
-    "webpack-cli": "^3.1.0"
+    "webpack-cli": "^3.3.12"
   }
 }
