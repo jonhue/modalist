@@ -18,7 +18,7 @@
     "test": "yarn run build && yarn run stylelint && yarn run eslint"
   },
   "dependencies": {
-    "animate.css": "^3.7.0"
+    "animate.css": "^4.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
